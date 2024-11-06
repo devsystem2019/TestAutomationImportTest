@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sleep 5
+                //sleep 5
                 echo "Deploying.."
                 //snDevOpsStep()
                 snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
