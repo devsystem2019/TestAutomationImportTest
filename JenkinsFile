@@ -7,7 +7,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Building..."
-                snDevOpsStep()
+                //snDevOpsStep()
                 sh 'mvn clean install'
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sleep 5
                 echo "Testing..."
-                snDevOpsStep()
+                //snDevOpsStep()
                 sh "mvn test -Dpublish"
                junit "**/target/surefire-reports/*.xml"
             }
@@ -24,13 +24,14 @@ pipeline {
             steps {
                 sleep 5
                 echo "Deploying.."
-                snDevOpsStep()
+                //snDevOpsStep()
                 snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
                     {"name": "demo1.jar","version": "1.0","semanticVersion": "1.1.0","repositoryName": "TestAutomationImportTest"}]}""")
                 sleep 5
                 snDevOpsChange()
             }
         }
+/*
         stage("Prod") {
             steps {
                 sleep 5
@@ -42,5 +43,6 @@ pipeline {
                 snDevOpsChange()
             }
         }
+*/
     }
 }
